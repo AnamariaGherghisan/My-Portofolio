@@ -1,0 +1,228 @@
+:root {
+  font-size: 16px;
+
+  --bgColor: #fff;
+  --onBg: #000;
+
+  --accentColor: #17bedb;
+  --trasparentAccentColor: hsla(167, 59%, 39%, 0.367);
+  --onAccent: #ffffff;
+
+  --sizeXs: 0.5rem;
+  --sizeSm: calc(var(--sizeXs) * 1.5);
+  --sizeMd: calc(var(--sizeSm) * 1.5);
+  --sizeLg: calc(var(--sizeMd) * 1.5);
+  --sizeXl: calc(var(--sizeLg) * 1.5);
+
+  --navBarWidth: clamp(200px, 20em, 20vw);
+  --mobNavBarHeight: calc(var(--sizeMd) + calc(var(--sizeSm) * 2));
+}
+
+.light {
+  --bgColor: #000000;
+  --onBg: #ffffff;
+
+  --accentColor: #0e6ba9;
+  --trasparentAccentColor: hsla(226, 100%, 50%, 0.2);
+  --onAccent: #ffffff;
+}
+
+*:not(button) {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bgColor);
+  color: var(--onBg);
+}
+
+header {
+  display: flex;
+  position: fixed;
+  width: 100%;
+  flex-direction: column;
+  align-items: space-between;
+  justify-content: center;
+  background-color: var(--accentColor);
+  color: var(--onAccent);
+}
+
+header h1 {
+  /* Styles for logo */
+  font-size: var(--sizeMd);
+  padding: 0;
+  display: flex;
+  margin: 0;
+}
+
+header nav ul {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  list-style-type: none;
+}
+
+header nav ul li {
+  padding: var(--sizeMd);
+}
+
+header nav ul li a,
+header nav ul li a:active,
+header nav ul li a:visited,
+header nav ul li a:hover {
+  color: var(--onAccent);
+  text-decoration: none;
+  font-weight: bold;
+  font-size: var(--sizeMd);
+  padding: var(--sizeXs);
+  border-radius: var(--sizeXs);
+}
+
+header nav ul li a:hover {
+  background-color: var(--bgColor);
+  color: var(--onBg);
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sizeSm);
+  padding: var(--sizeSm);
+  padding-top: calc((var(--sizeSm) * 2) + var(--mobNavBarHeight));
+}
+
+main section {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(calc(100svh - (var(--sizeMd) * 2)) - var(--mobNavBarHeight));
+  justify-content: center;
+  padding: var(--sizeXs);
+}
+
+main section:nth-child(odd) {
+  background-color: var(--trasparentAccentColor);
+}
+main section:nth-child(even) {
+  background-color: var(--onAccent);
+  color: var(--accentColor);
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  padding: var(--sizeSm);
+  background-color: var(--trasparentAccentColor);
+  color: var(--onAccent);
+  box-sizing: border-box;
+}
+.social {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: var(--sizeMd);
+  border-left: var(--sizeMd);
+}
+footer section:nth-child(odd) {
+  background-color: var(--trasparentAccentColor);
+}
+footer section:nth-child(even) {
+  background-color: var(--onAccent);
+  color: var(--accentColor);
+}
+
+.collapse:not(.show) {
+  display: none;
+}
+
+.mobFlexRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--sizeSm);
+}
+
+.navBarButton {
+  content: " ";
+  padding: var(--sizeXs);
+  background: var(--accentColor);
+  border: var(--onAccent) solid 0.001em;
+  border-radius: var(--sizeXs);
+}
+.clickable {
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.333);
+  transition: filter 0.3s linear;
+  transition: box-shadow 0.3s linear;
+  transition: transform 0.3s linear;
+  transition: background 0.3s linear;
+}
+
+.clickable:hover {
+  box-shadow: 4px 4px 7px rgba(0, 0, 0, 0.333);
+  filter: brightness(1.1);
+  transform: scale(1.01);
+}
+
+.clickable:active {
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.333);
+  filter: brightness(0.9);
+  transform: scale(0.99);
+}
+
+.navBarButton svg {
+  display: block;
+}
+
+.menuButtonIcon {
+  fill: var(--onAccent);
+}
+/* FOR DESKTOPS */
+@media screen and (min-width: 601px) {
+  body {
+    display: flex;
+    flex-direction: row;
+  }
+  main {
+    flex-direction: column;
+  }
+  header {
+    position: fixed;
+    height: 100svh;
+    width: var(--navBarWidth);
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: var(--sizeSm);
+  }
+  header nav ul {
+    flex-direction: column;
+  }
+  .mainWrapper {
+    padding-left: calc(var(--navBarWidth) + var(--sizeXs));
+  }
+  main section {
+    padding: var(--sizeXl);
+  }
+  footer {
+    gap: var(--sizeLg);
+    flex-direction: row;
+  }
+  .collapse:not(.show) {
+    display: flex;
+  }
+  .mobFlexRow {
+    display: flex;
+    flex-direction: column;
+  }
+  .desktopHide {
+    display: none;
+  }
+}
