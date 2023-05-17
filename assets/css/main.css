@@ -1,3 +1,4 @@
+/*declaring variables for sizes and colours*/
 :root {
   font-size: 16px;
 
@@ -18,15 +19,7 @@
   --mobNavBarHeight: calc(var(--sizeMd) + calc(var(--sizeSm) * 2));
 }
 
-.light {
-  --bgColor: #000000;
-  --onBg: #ffffff;
-
-  --accentColor: #0e6ba9;
-  --trasparentAccentColor: hsla(226, 100%, 50%, 0.2);
-  --onAccent: #ffffff;
-}
-
+/*removing browser default*/
 *:not(button) {
   box-sizing: border-box;
   margin: 0;
@@ -37,6 +30,8 @@
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
+/*Mobile first*/
+/* Styles  */
 body {
   display: flex;
   flex-direction: column;
@@ -56,11 +51,17 @@ header {
 }
 
 header h1 {
-  /* Styles for logo */
   font-size: var(--sizeMd);
   padding: 0;
   display: flex;
   margin: 0;
+}
+
+h3 {
+  font-size: var(--sizeMd);
+}
+mark {
+  color: var(--trasparentAccentColor);
 }
 
 header nav ul {
@@ -97,6 +98,9 @@ main {
   gap: var(--sizeSm);
   padding: var(--sizeSm);
   padding-top: calc((var(--sizeSm) * 2) + var(--mobNavBarHeight));
+  aspect-ratio: 24px;
+  filter: drop-shadow(--accentColor);
+  border: radius 50%;
 }
 
 main section {
@@ -107,39 +111,58 @@ main section {
   padding: var(--sizeXs);
 }
 
-main section:nth-child(odd) {
-  background-color: var(--trasparentAccentColor);
+footer {
+  display: flex;
+  flex-direction: column;
+  padding: var(--sizeXs) var(--sizeSm);
+  background-color: var(--accentColor);
+  color: var(--onAccent);
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sizeSm);
 }
+
+footer section:nth-child(even) {
+  background-color: var(--accentColor);
+  color: var(--onAccent);
+}
+
 main section:nth-child(even) {
   background-color: var(--onAccent);
   color: var(--accentColor);
 }
 
-footer {
-  display: flex;
-  flex-direction: column;
-  padding: var(--sizeSm);
+main section:nth-child(odd) {
   background-color: var(--trasparentAccentColor);
-  color: var(--onAccent);
-  box-sizing: border-box;
 }
+
+/*Appeal classes or id's*/
+.collapse:not(.show) {
+  display: none;
+}
+  
+.img {
+    width: 200px;
+    height: 200px;
+    border: 1px solid;
+    border-radius: 50%;
+    padding: 0;
+    margin: 0;
+    aspect-ratio: 1/1;
+    flex-wrap: wrap;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.3));
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .social {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   margin-top: var(--sizeMd);
   border-left: var(--sizeMd);
-}
-footer section:nth-child(odd) {
-  background-color: var(--trasparentAccentColor);
-}
-footer section:nth-child(even) {
-  background-color: var(--onAccent);
-  color: var(--accentColor);
-}
-
-.collapse:not(.show) {
-  display: none;
 }
 
 .mobFlexRow {
@@ -156,6 +179,8 @@ footer section:nth-child(even) {
   background: var(--accentColor);
   border: var(--onAccent) solid 0.001em;
   border-radius: var(--sizeXs);
+  width: 100px; 
+  height: 40px; 
 }
 .clickable {
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.333);
@@ -184,7 +209,31 @@ footer section:nth-child(even) {
 .menuButtonIcon {
   fill: var(--onAccent);
 }
-/* FOR DESKTOPS */
+
+.dark {
+  --bgColor: #000000;
+  --onBg: #ffffff;
+
+  --accentColor: #0e6ba9;
+  --trasparentAccentColor: hsla(226, 100%, 50%, 0.2);
+  --onAccent: #ffffff;
+}
+
+#top {
+  position: bottom;
+  margin: 0;
+  padding: 0;
+  border: none;
+  display: inline-block;
+  flex-direction: column;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content:center;
+  width=1em;
+height=1em;
+}
+
+/* Second media queries for desktop */
 @media screen and (min-width: 601px) {
   body {
     display: flex;
